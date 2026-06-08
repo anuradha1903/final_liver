@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liver Disease Prediction</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+
+            background:
+            linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)
+            ),
+            url("/static/human-liver-anatomy-on-scientific-260nw-2238184919.webp");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            width:550px;
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(12px);
+            border-radius:20px;
+            padding:30px;
+            text-align:center;
+            color:white;
+            box-shadow:0px 0px 20px rgba(0,0,0,0.4);
+        }
+
+        h1{
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin:8px 0;
+            border:none;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            border:none;
+            border-radius:8px;
+            background:#28a745;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#218838;
+        }
+
+        .result{
+            margin-top:20px;
+            font-size:22px;
+            font-weight:bold;
+            color:white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Liver Disease Prediction</h1>
+
+<form action="/predict" method="POST">
+
+<input type="number" name="age" placeholder="Age" required>
+
+<input type="number" name="gender" placeholder="Gender (1=Male, 0=Female)" required>
+
+<input type="number" step="any" name="tb" placeholder="Total Bilirubin" required>
+
+<input type="number" step="any" name="db" placeholder="Direct Bilirubin" required>
+
+<input type="number" step="any" name="alk" placeholder="Alkaline Phosphotase" required>
+
+<input type="number" step="any" name="alt" placeholder="ALT" required>
+
+<input type="number" step="any" name="ast" placeholder="AST" required>
+
+<input type="number" step="any" name="tp" placeholder="Total Proteins" required>
+
+<input type="number" step="any" name="alb" placeholder="Albumin" required>
+
+<input type="number" step="any" name="ratio" placeholder="Albumin / Globulin Ratio" required>
+
+<button type="submit">
+Predict
+</button>
+
+</form>
+
+<div class="result">
+{{ prediction_text }}
+</div>
+
+</div>
+
+</body>
+</html>
